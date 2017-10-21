@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using Windows.Storage;
+using Windows.UI.Popups;
 
-namespace MegaDesk_4_DalePerreault
+namespace MegaDesk_6_DaleVictor 
 {
     class Deskquote
     {
@@ -17,7 +19,7 @@ namespace MegaDesk_4_DalePerreault
         const int BIGAREA = 2000;
         const int SMALLAREA = 1000;
 
-        // constructor method
+        // constructor methods
         public Deskquote(string name, int days, int wide, int deep, int draw, DesktopMaterial surface)
         {
             custName = name;
@@ -25,6 +27,15 @@ namespace MegaDesk_4_DalePerreault
             prodDays = days;
             orderDate = DateTime.Now;
             price = BASEPRICE + calcPrice(custDesk, prodDays);
+        }
+        [JsonConstructor]
+        public Deskquote(string custName, Desk custDesk, int prodDays, DateTime orderDate, int price)
+        {
+            this.custName = custName;
+            this.custDesk = custDesk;
+            this.prodDays = prodDays;
+            this.orderDate = orderDate;
+            this.price = price;
         }
 
         public Deskquote(string name, int days, int wide, int deep, int draw, DateTime date, DesktopMaterial surface)
@@ -59,7 +70,7 @@ namespace MegaDesk_4_DalePerreault
 
         public int[,] getRushOrder()
         {
-            StreamReader sr = new StreamReader("rushOrderPrices.txt");
+            StreamReader sr = new StreamReader(File.OpenRead("rushOrderPrices.txt"));
             int[,] rushCost = new int[3, 3];
             for (int i = 0; i < 3; i++)
             {
@@ -97,12 +108,12 @@ namespace MegaDesk_4_DalePerreault
             return cost;
         }
 
-        public void writeQuote()
+        public async void writeQuote()
         {
-            StreamWriter sw = new StreamWriter("quotes.json", true);
-            string json = JsonConvert.SerializeObject(this);
-            sw.WriteLine(json);
-            sw.Close();
+            StorageFolder path1 = ApplicationData.Current.LocalFolder;
+            StorageFile sw = await path1.CreateFileAsync("quotes.json", CreationCollisionOption.OpenIfExists);
+            string json = JsonConvert.SerializeObject(this) + Environment.NewLine;
+            await FileIO.AppendTextAsync(sw, json);
         }
 
         public override string ToString()

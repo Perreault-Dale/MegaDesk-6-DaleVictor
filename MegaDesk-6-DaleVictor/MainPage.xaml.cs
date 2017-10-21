@@ -26,5 +26,25 @@ namespace MegaDesk_6_DaleVictor
         {
             this.InitializeComponent();
         }
+
+        private void exitButton_click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
+
+        private void addQuote_click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddQuote));
+        }
+
+        private void viewQuoteButton_click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ViewQuotes));
+        }
+
+        private void searchQuoteButton_click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SearchQuote));
+        }
     }
 }

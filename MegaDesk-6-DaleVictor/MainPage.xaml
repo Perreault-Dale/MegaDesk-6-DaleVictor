@@ -14,6 +14,11 @@
                 <GradientStop Color="#FF1335F1" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <TextBlock x:Name="megadeskTitle" HorizontalAlignment="Center" Margin="0,98,0,0" TextWrapping="Wrap" Text="MegaDesk UWP App" VerticalAlignment="Top" Width="732" FontSize="48" FocusVisualPrimaryBrush="#FFEBF1F9" Foreground="#FFEBF1F9" TextAlignment="Center"/>
+        <Button x:Name="addQuoteButton" Content="Add Quote" HorizontalAlignment="Left" Margin="146,258,0,0" VerticalAlignment="Top" Height="67" Width="324" FontSize="24" Foreground="#FFEBF1F9" Click="addQuote_click"/>
+        <Button x:Name="viewQuoteButton" Content="View Quotes" HorizontalAlignment="Left" Margin="554,258,0,0" VerticalAlignment="Top" Height="67" Width="324" FontSize="24" Foreground="#FFEBF1F9" Click="viewQuoteButton_click"/>
+        <Button x:Name="exitButton" Content="Exit" HorizontalAlignment="Left" Margin="554,421,0,0" VerticalAlignment="Top" Height="67" Width="324" FontSize="24" Foreground="#FFEBF1F9" Click="exitButton_click"/>
+        <Button x:Name="searchQuoteButton" Content="Search Quotes" HorizontalAlignment="Left" Margin="146,421,0,0" VerticalAlignment="Top" Height="67" Width="324" FontSize="24" Foreground="#FFEBF1F9" Click="searchQuoteButton_click"/>
 
     </Grid>
 </Page>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MegaDesk_4_DalePerreault
+namespace MegaDesk_6_DaleVictor
 {
     enum DesktopMaterial
     {
